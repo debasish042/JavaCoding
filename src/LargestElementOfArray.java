@@ -2,13 +2,11 @@ import java.util.*;
 public class LargestElementOfArray {
 
     public static void main(String[] args) {
-
-        int [] arr= {4,23,45,2,1};
+        int [] arr ={23,12,34,45,6};
 
         Arrays.sort(arr);
-
-        int largest= arr[arr.length-1];
-
-        System.out.println("The largest element is "+largest);
+        System.out.println("Sorted array is" + Arrays.toString(arr));
+        System.out.println("Length of the array is "+arr.length);
+        System.out.println("Largest element is "+ arr[arr.length-1]);
     }
 }
