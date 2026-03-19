@@ -1,0 +1,30 @@
+package DSA;
+
+import java.util.Arrays;
+
+public class Anagram {
+
+    public static boolean isAnagram(String s1,String s2) {
+
+        if(s1==null||s2==null)return false;
+
+        s1=s1.replaceAll("\\s","").toUpperCase();
+        s2=s2.replaceAll("\\s","").toUpperCase();
+
+        if(s1.length()!= s2.length()) return false;
+
+        char[] c1=s1.toCharArray();
+        char[] c2=s2.toCharArray();
+
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+
+        return Arrays.equals(c1,c2);
+
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("Race","Care"));
+    }
+}
