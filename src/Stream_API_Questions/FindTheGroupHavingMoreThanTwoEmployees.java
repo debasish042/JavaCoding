@@ -1,0 +1,29 @@
+package Stream_API_Questions;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class FindTheGroupHavingMoreThanTwoEmployees {
+    public static void main(String[] args) {
+
+        List<Employee> employees = Arrays.asList(
+                new Employee(1, "Alice", "Bangalore", 80000, Arrays.asList("Java", "Spring"), "IT"),
+                new Employee(2, "Bob", "Hyderabad", 60000, Arrays.asList("JavaScript", "React"), "IT"),
+                new Employee(3, "Charlie", "Bangalore", 90000, Arrays.asList("Java", "Microservices"), "IT"),
+                new Employee(4, "David", "Pune", 50000, Arrays.asList("HR", "Recruitment"), "HR"),
+                new Employee(5, "Eve", "Hyderabad", 70000, Arrays.asList("Finance", "Excel"), "Finance")
+        );
+
+        Map<String,Long> map= employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment,
+                        Collectors.counting()));
+
+        List<Map.Entry<String, Long>> collect = map.entrySet().stream()
+                .filter(x -> x.getValue() > 2)
+                .collect(Collectors.toList());
+        System.out.println(collect);
+
+    }
+}
